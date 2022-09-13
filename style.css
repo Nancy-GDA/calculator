@@ -1,0 +1,82 @@
+:root{
+    --backgraound-display: #DED9D8;
+    --border-calculator:#D64326;
+    --bacgraound-calculator:#D19D24;
+    --buttons:#BF7D36;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container-calculator{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    justify-content:center ;
+    align-items: center;
+    margin: 70px;
+
+
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+    width: 500px;
+    height: 600px;
+    padding: 35px;
+    border: 2px solid ;
+    background-color:var(--bacgraound-calculator);
+    border-radius: 10px;
+    
+}
+
+.numbers{
+    box-sizing: border-box;
+    padding: 0px;
+    border-radius: 10px; 
+    font-size: 25px;
+    background: var(--buttons);
+    border: 1px solid white;
+}
+
+.display-screen{
+    width: 100%;
+    height: 100px;
+    border: 1px solid white;
+    background-color: var(--backgraound-display);
+    margin: 20px 0;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 25px;
+    text-align: end;
+    border-radius: 5px;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: repeat(5,50px);
+    row-gap: 15px;
+    column-gap: 10px;
+}
+
+.zero{
+    grid-column-end: span 2;
+}
+
+.equal-sign, .sumary-sing{
+    grid-row-end: span 2;
+}
+
+.equal-sign{
+    grid-column-start: 4;
+    grid-row-start: 4;
+}
+
+
