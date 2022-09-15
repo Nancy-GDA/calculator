@@ -1,72 +1,48 @@
 const operator = document.querySelectorAll('.operator')
 const ouputValue = document.querySelector('.output-value')
-const textDisplay = document.querySelector(".text-display");
-const one = document.querySelector(".one");
-const two = document.querySelector(".two");
-const three = document.querySelector(".three");
-const four = document.querySelector(".four");
-const five = document.querySelector(".five");
-const six = document.querySelector(".six");
-const seven = document.querySelector(".seven");
-const eigth = document.querySelector(".eigth");
-const nine = document.querySelector(".nine");
-const zero = document.querySelector('.zero')
-const remain = document.querySelector('.remain')
-const sumary = document.querySelector('.sumary-sing')
-const multiplication = document.querySelector('.multiplication')
-const division = document.querySelector('.division')
-const point = document.querySelector('.point')
-const clean = document.querySelector('.clean')
-
-one.addEventListener("click", () => {
-  textDisplay.innerText = "1";
-});
-two.addEventListener("click", () => {
-  textDisplay.innerText = "2";
-});
-three.addEventListener("click", () => {
-  textDisplay.innerText = "3";
-});
-four.addEventListener("click", () => {
-  textDisplay.innerText = "4";
-});
-five.addEventListener("click", () => {
-  textDisplay.innerText = "5";
-});
-six.addEventListener("click", () => {
-  textDisplay.innerText = "6";
-});
-seven.addEventListener("click", () => {
-  textDisplay.innerText = "7";
-});
-eigth.addEventListener("click", () => {
-  textDisplay.innerText = "8";
-});
-nine.addEventListener("click", () => {
-  textDisplay.innerText = "9";
-});
-
-zero.addEventListener('click',() => {
-    textDisplay.innerText = "0";
-})
-
-point.addEventListener('click',() =>{
-    textDisplay.innerText = '.'
-})
+const textDisplay = document.querySelector('.text-display');
+const numbers = document.querySelectorAll('.numbers')
 
 
-remain.addEventListener('click',() =>{
-    ouputValue.innerText = '-'
-})
+const limpiar = () => {
+    textDisplay.innerText = ''
+}
 
-sumary.addEventListener('click',() =>{
-    ouputValue.innerText = '+'
-})
+const valor1 =  (operador)  => {
+    calculator.numberA = Number(textDisplay.innerText)
+    calculator.operator = operador
+    limpiar()
+}
 
-division.addEventListener('click',() =>{
-    ouputValue.innerText = '/'
-})
+const resultado = () => {
+    calculator.numberB = Number(textDisplay.innerText)
+    textDisplay.innerText = calculator.numberA + calculator.numberB
+}
 
-multiplication.addEventListener('click',() =>{
-    ouputValue.innerText = 'X'
-})
+const calculator = {
+    numberA: 0,
+    numberB: 0,
+    operator: ''
+}
+
+
+const operators = {
+    'C': () => limpiar(),
+    '+': () => valor1('+'),
+    '-': () => valor1('-'),
+    'X': () => valor1('*'),
+    '/': () => valor1('/'),
+    '=': () => resultado()
+}
+
+for(const button of numbers){
+    button.addEventListener('click', (evt) => {
+        if (operators[evt.target.innerText]) {
+            operators[evt.target.innerText]()
+            return
+        }
+
+        textDisplay.innerText += evt.target.innerText
+    })
+}
+
