@@ -9,14 +9,14 @@ const limpiar = () => {
 }
 
 const valor1 =  (operador)  => {
-    calculator.numberA = Number(textDisplay.innerText)
+    calculator.numberA = textDisplay.innerText
     calculator.operator = operador
     limpiar()
 }
 
 const resultado = () => {
-    calculator.numberB = Number(textDisplay.innerText)
-    textDisplay.innerText = calculator.numberA + calculator.numberB
+    calculator.numberB = textDisplay.innerText
+    textDisplay.innerText = eval(`${calculator.numberA} ${calculator.operator} ${calculator.numberB}`)
 }
 
 const calculator = {

@@ -1,8 +1,9 @@
 :root{
-    --backgraound-display: #DED9D8;
+    --backgraound-display: #FBFCFC;
     --border-calculator:#D64326;
-    --bacgraound-calculator:#D19D24;
-    --buttons:#BF7D36;
+    --bacgraound-calculator:#050202e3;
+    --buttons-operators:#027e83;
+    --buttons:#949FA0;
 }
 
 body{
@@ -13,12 +14,10 @@ body{
 
 .container-calculator{
     display:flex;
-    height: 100%;
+    height:100%;
     justify-content:center ;
     align-items: center;
     margin: 70px;
-
-
 }
 
 .calculator{
@@ -26,48 +25,53 @@ body{
     flex-direction: column;
     justify-content: space-around;
     box-sizing: border-box;
-    width: 500px;
-    height: 600px;
-    padding: 35px;
-    border: 2px solid ;
-    background-color:var(--bacgraound-calculator);
+    width: 300px;
+    height: 500px;
+    padding: 10px;
+    border: 2px solid;
+    background-color: var(--bacgraound-calculator);
     border-radius: 10px;
-    
 }
 
 .numbers{
     box-sizing: border-box;
     padding: 0px;
-    border-radius: 10px; 
-    font-size: 25px;
+    border-radius: 40px; 
+    font-size: 20px;
     background: var(--buttons);
-    border: 1px solid white;
+    border: 1px solid #5e6565c2 ;
     cursor: pointer;
+    color: #DED9D8;
+    box-shadow: 1px 1px 1px 1px #555b5bc2
+}
+.operator{
+    background-color: var(--buttons-operators);
+    box-shadow: 1px 1px 1px 1px #196d6dc2;
 }
 
 .display-screen{
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    height: 100px;
+    height: 120px;
     border: 1px solid white;
     background-color: var(--backgraound-display);
     margin: 20px 0;
     box-sizing: border-box;
-    padding: 10px 19px;
+    padding: 10px 10px;
     font-size: 25px;
     text-align: end;
     border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+   
 }
 .operation-sign{
     text-align: start;
 }
 .buttons{
     display: grid;
-    grid-template-columns: repeat(4,100px);
+    grid-template-columns: repeat(4,60px);
     grid-template-rows: repeat(5,50px);
-    row-gap: 15px;
-    column-gap: 10px;
+    grid-gap: 10px 10px;
 }
 
 .zero{
