@@ -1,48 +1,75 @@
-const operator = document.querySelectorAll('.operator')
-const ouputValue = document.querySelector('.output-value')
-const textDisplay = document.querySelector('.text-display');
-const numbers = document.querySelectorAll('.numbers')
+const operator = document.querySelectorAll(".operator")
+const ouputValue = document.querySelector(".output-value")
+const textDisplay = document.querySelector(".text-display")
+const numbers = document.querySelectorAll(".numbers")
 
 
-const limpiar = () => {
-    textDisplay.innerText = ''
+
+//Funcion para limpiar pantalla
+const clean = () => {
+  textDisplay.innerText = ""
 }
 
-const valor1 =  (operador)  => {
-    calculator.numberA = textDisplay.innerText
-    calculator.operator = operador
-    limpiar()
+//Inicia la operacion tomando el operador y los valores con la funcion resultado y limpia la pantalla
+const operation = (operador) => {
+  calculator.currentOperator = operador
+  results()
+  clean()
 }
 
-const resultado = () => {
-    calculator.numberB = textDisplay.innerText
-    textDisplay.innerText = eval(`${calculator.numberA} ${calculator.operator} ${calculator.numberB}`)
+//Evalua que es lo que tiene valueA y si esta vacio pone el valor + el operador 
+const results = () => {
+  if (calculator.valueA == "") {
+    calculator.valueA = textDisplay.innerText
+    calculator.prevOperator = calculator.currentOperator
+    return
+  }
+
+  calculator.valueB = textDisplay.innerText
+  
+  const result = eval(
+    `${calculator.valueA} ${calculator.prevOperator} ${calculator.valueB}`
+  )
+
+  calculator.valueA = result
+  ouputValue.innerText = result
+  calculator.prevOperator = calculator.currentOperator
+  
 }
 
+//Objeteo con los valores vacios y operadores
 const calculator = {
-    numberA: 0,
-    numberB: 0,
-    operator: ''
+  valueA: "",
+  valueB: "",
+  currentOperator: "",
+  prevOperator: ""
 }
 
 
+//operadores con la funcion a ejecutar para la operacion
 const operators = {
-    'C': () => limpiar(),
-    '+': () => valor1('+'),
-    '-': () => valor1('-'),
-    'X': () => valor1('*'),
-    '/': () => valor1('/'),
-    '=': () => resultado()
+  C: () => {
+    clean()
+    for (const item in calculator) {
+      calculator[item] = ""
+    }
+  },
+  "+": () => operation("+"),
+  "-": () => operation("-"),
+  X: () => operation("*"),
+  "/": () => operation("/"),
+  "=": () => results(),
 }
 
-for(const button of numbers){
-    button.addEventListener('click', (evt) => {
-        if (operators[evt.target.innerText]) {
-            operators[evt.target.innerText]()
-            return
-        }
 
-        textDisplay.innerText += evt.target.innerText
-    })
+for (const button of numbers) {
+  button.addEventListener("click", (evt) => {
+    if (operators[evt.target.innerText]) {
+      operators[evt.target.innerText]()
+      return
+    }
+    textDisplay.innerText += evt.target.innerText
+    
+  })
 }
 
